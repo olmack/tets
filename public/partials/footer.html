@@ -2,9 +2,9 @@
   <div class="container">
     <div class="cols">
       <div>
-        <a href="/" class="logo"><img src="/img/logo.svg" alt="" width="40" height="40"><span>DYLAN <em>AUTO</em></span></a>
-        <p style="max-width:320px;font-size:0.93rem">Garage indépendant à Saint-Estève : mécanique toutes marques, carrosserie et peinture. Devis gratuit, travail soigné, prix justes.</p>
-        <p class="muted" style="font-size:0.85rem">⭐ 4,9/5 sur 77 avis Google</p>
+        <a href="/" class="logo"><img src="/img/logo.svg" alt="" width="42" height="42"><span>DYLAN <em>AUTO</em></span></a>
+        <p style="max-width:340px;font-size:.93rem">Garage indépendant à Saint-Estève : mécanique toutes marques, carrosserie et peinture. Devis gratuit, travail soigné, prix justes.</p>
+        <span class="rating"><svg class="ico ico-sm" style="fill:currentColor"><use href="#i-star"/></svg> 4,9/5 · 77 avis Google</span>
       </div>
       <div>
         <h4>Navigation</h4>
@@ -19,8 +19,7 @@
         <h4>Horaires</h4>
         <ul>
           <li>Lundi – Vendredi</li>
-          <li>9h00 – 12h00</li>
-          <li>14h00 – 18h00</li>
+          <li>9h00 – 12h00 · 14h00 – 18h00</li>
           <li class="muted">Samedi & dimanche : fermé</li>
         </ul>
       </div>
@@ -28,8 +27,7 @@
         <h4>Contact</h4>
         <ul>
           <li>6 rue du Ribéral<br>66240 Saint-Estève</li>
-          <li><a href="tel:+33434126391">04 34 12 63 91</a></li>
-          <li><a href="tel:+33643211243">06 43 21 12 43</a></li>
+          <li><a href="tel:+33434126391">04 34 12 63 91</a> · <a href="tel:+33643211243">06 43 21 12 43</a></li>
           <li><a href="mailto:contact@dylanauto.fr">contact@dylanauto.fr</a></li>
           <li><a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener">Itinéraire Google Maps ↗</a></li>
         </ul>
@@ -41,5 +39,12 @@
     </div>
   </div>
 </footer>
-<a href="tel:+33434126391" class="call-fab">📞 Appeler</a>
+<nav class="bottom-nav" aria-label="Navigation rapide">
+  <a href="/" data-nav="/"><svg class="ico"><use href="#i-home"/></svg>Accueil</a>
+  <a href="/devis.html" data-nav="/devis.html"><svg class="ico"><use href="#i-doc"/></svg>Devis</a>
+  <a href="/rendez-vous.html" data-nav="/rendez-vous.html" class="cta"><span class="ico-wrap"><svg class="ico"><use href="#i-cal"/></svg></span>Rendez-vous</a>
+  <a href="tel:+33434126391"><svg class="ico"><use href="#i-phone"/></svg>Appeler</a>
+</nav>
+<button class="to-top" id="to-top" aria-label="Retour en haut"><svg class="ico"><use href="#i-up"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="/js/main.js"></script>

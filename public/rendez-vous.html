@@ -5,10 +5,11 @@
   <meta name="description" content="Réservez votre rendez-vous au garage DYLAN AUTO en ligne, 24h/24 : choisissez votre créneau, recevez la confirmation par email.">
   <link rel="canonical" href="https://dylanauto.fr/rendez-vous.html">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -20,19 +21,23 @@
     <p>Choisissez un jour et un créneau disponible. Vous recevez immédiatement un email récapitulatif, puis la confirmation du garage.</p>
   </div>
 </section>
-<section class="section">
+<section class="section-tight">
   <div class="container">
+    <nav class="stepper" id="stepper" aria-label="Étapes">
+      <a href="#etape-1" class="current" data-step="1"><b>1</b><span>Date & heure</span></a>
+      <a href="#etape-2" data-step="2"><b>2</b><span>Vos informations</span></a>
+    </nav>
     <form id="rdv-form" class="rdv-layout" novalidate>
-      <div class="card">
-        <h3>1. Choisissez votre créneau</h3>
+      <div class="card form-card" id="etape-1" style="scroll-margin-top:150px">
+        <h3><span class="n">1</span>Choisissez votre créneau</h3>
         <div class="calendar">
           <div class="calendar-head">
-            <button type="button" id="prev-month" aria-label="Mois précédent">‹</button>
+            <button type="button" id="prev-month" aria-label="Mois précédent"><svg class="ico" style="transform:rotate(90deg)"><use href="#i-chev"/></svg></button>
             <strong id="month-label"></strong>
-            <button type="button" id="next-month" aria-label="Mois suivant">›</button>
+            <button type="button" id="next-month" aria-label="Mois suivant"><svg class="ico" style="transform:rotate(-90deg)"><use href="#i-chev"/></svg></button>
           </div>
           <div class="calendar-grid" id="calendar-grid"></div>
-          <div class="legend"><span><i style="background:#ecfdf5;border:1px solid #bbf7d0"></i>Disponible</span><span><i style="background:#fef2f2;border:1px solid #fecaca"></i>Complet</span><span><i style="background:#f3f4f6"></i>Fermé</span></div>
+          <div class="legend"><span><i style="background:var(--ok-soft)"></i>Disponible</span><span><i style="background:var(--err-soft)"></i>Complet</span><span><i style="background:var(--bg);border:1px solid var(--line)"></i>Fermé</span></div>
         </div>
         <div id="slots-wrap" style="margin-top:18px">
           <p class="muted" id="slots-hint">Sélectionnez une date pour voir les horaires.</p>
@@ -40,8 +45,8 @@
         </div>
         <div class="field-error" id="err-slot">Merci de choisir un créneau.</div>
       </div>
-      <div class="card">
-        <h3>2. Vos informations</h3>
+      <div class="card form-card" id="etape-2" style="scroll-margin-top:150px">
+        <h3><span class="n">2</span>Vos informations</h3>
         <div class="chosen" id="chosen" style="display:none"></div>
         <div class="form">
           <div><label for="r-service">Motif du rendez-vous <span class="req">*</span></label>
@@ -60,18 +65,18 @@
             </select><div class="field-error" id="err-service"></div></div>
           <div class="form-row">
             <div><label for="r-name">Nom et prénom <span class="req">*</span></label><input type="text" id="r-name" name="name" required autocomplete="name"><div class="field-error" id="err-name"></div></div>
-            <div><label for="r-phone">Téléphone <span class="req">*</span></label><input type="tel" id="r-phone" name="phone" required autocomplete="tel"><div class="field-error" id="err-phone"></div></div>
+            <div><label for="r-phone">Téléphone <span class="req">*</span></label><input type="tel" id="r-phone" name="phone" required autocomplete="tel" inputmode="tel"><div class="field-error" id="err-phone"></div></div>
           </div>
-          <div><label for="r-email">Email <span class="req">*</span></label><input type="email" id="r-email" name="email" required autocomplete="email"><div class="field-error" id="err-email"></div></div>
+          <div><label for="r-email">Email <span class="req">*</span></label><input type="email" id="r-email" name="email" required autocomplete="email" inputmode="email"><div class="field-error" id="err-email"></div></div>
           <div class="form-row">
             <div><label for="r-vehicle">Véhicule</label><input type="text" id="r-vehicle" name="vehicle" placeholder="Peugeot 308 2017"></div>
-            <div><label for="r-plate">Immatriculation</label><input type="text" id="r-plate" name="plate" placeholder="AB-123-CD" style="text-transform:uppercase"></div>
+            <div><label for="r-plate">Immatriculation</label><input type="text" id="r-plate" name="plate" placeholder="AB-123-CD" style="text-transform:uppercase" autocapitalize="characters"></div>
           </div>
           <div><label for="r-message">Message (facultatif)</label><textarea id="r-message" name="message" placeholder="Symptômes, référence de devis, précisions…"></textarea></div>
           <label class="checkbox"><input type="checkbox" id="r-consent" required> <span>J’accepte que mes données soient utilisées pour gérer mon rendez-vous. <a href="/mentions-legales.html#rgpd">En savoir plus</a></span></label>
           <div class="honeypot" aria-hidden="true"><label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="alert alert-err" id="rdv-error"></div>
-          <button type="submit" class="btn btn-primary btn-block" id="rdv-submit">Confirmer ma demande de rendez-vous</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="rdv-submit"><svg class="ico"><use href="#i-check"/></svg>Confirmer ma demande</button>
           <p class="hint center">Vous recevrez un email avec une invitation calendrier et un lien d’annulation.</p>
         </div>
       </div>
@@ -81,7 +86,7 @@
       <p id="result-text"></p>
       <p>Un email récapitulatif vient de vous être envoyé (avec invitation calendrier). Le garage confirmera le rendez-vous très rapidement.</p>
       <p class="muted">Pensez à venir avec la carte grise du véhicule. Adresse : 6 rue du Ribéral, 66240 Saint-Estève.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px"><a href="/" class="btn btn-primary">Retour à l’accueil</a><a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener" class="btn btn-outline">Itinéraire ↗</a></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px"><a href="/" class="btn btn-primary">Retour à l’accueil</a><a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener" class="btn btn-outline"><svg class="ico"><use href="#i-pin"/></svg>Itinéraire</a></div>
     </div>
   </div>
 </section>

@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
   <title>DYLAN AUTO – Garage mécanique, carrosserie & peinture à Saint-Estève (66)</title>
   <meta name="description" content="Garage DYLAN AUTO à Saint-Estève près de Perpignan : mécanique toutes marques, carrosserie, peinture. Devis gratuit en ligne, prise de rendez-vous 24h/24. Noté 4,9/5.">
   <link rel="canonical" href="https://dylanauto.fr/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <meta property="og:title" content="DYLAN AUTO – Garage à Saint-Estève">
   <meta property="og:description" content="Mécanique, carrosserie & peinture. Devis en ligne et rendez-vous 24h/24.">
@@ -40,137 +41,152 @@
 <section class="hero">
   <div class="container">
     <div>
-      <div class="badge"><span class="stars">★★★★★</span> 4,9/5 · 77 avis Google</div>
-      <h1>Votre garage de confiance à <em>Saint-Estève</em></h1>
-      <p class="lead">Mécanique toutes marques, carrosserie et peinture. Des professionnels à l’écoute, des prix justes et un travail soigné, à deux pas de Perpignan.</p>
-      <div class="actions">
-        <a href="/devis.html" class="btn btn-primary">Obtenir un devis immédiat</a>
-        <a href="/rendez-vous.html" class="btn btn-outline-light">Prendre rendez-vous</a>
+      <div class="badge" data-reveal><span class="g">G</span><span class="stars">★★★★★</span> 4,9/5 · 77 avis Google</div>
+      <h1 data-reveal style="--d:.05s">Votre garage de confiance à <span class="grad">Saint-Estève</span></h1>
+      <p class="lead" data-reveal style="--d:.1s">Mécanique toutes marques, carrosserie et peinture. Des professionnels à l’écoute, des prix justes et un travail soigné, à deux pas de Perpignan.</p>
+      <div class="actions" data-reveal style="--d:.15s">
+        <a href="/devis.html" class="btn btn-primary btn-lg"><svg class="ico"><use href="#i-doc"/></svg>Devis immédiat</a>
+        <a href="/rendez-vous.html" class="btn btn-ghost-light btn-lg"><svg class="ico"><use href="#i-cal"/></svg>Prendre rendez-vous</a>
+      </div>
+      <div class="trust" data-reveal style="--d:.2s">
+        <span><svg class="ico"><use href="#i-check"/></svg>Devis PDF en 2 min</span>
+        <span><svg class="ico"><use href="#i-check"/></svg>RDV en ligne 24h/24</span>
+        <span><svg class="ico"><use href="#i-check"/></svg>Travaux garantis</span>
       </div>
     </div>
-    <div class="hero-card">
-      <h3>Pourquoi choisir DYLAN AUTO ?</h3>
-      <ul>
-        <li>Devis gratuit et détaillé, sans engagement</li>
-        <li>Toutes marques, véhicules récents ou anciens</li>
-        <li>Mécanique, carrosserie et peinture au même endroit</li>
-        <li>Pièces de qualité, travaux garantis</li>
-        <li>Rendez-vous en ligne 24h/24</li>
-      </ul>
-      <div class="hours">
-        <span class="open-status" id="open-status">Ouvert</span>
-        <div style="margin-top:8px">Lundi – Vendredi : 9h–12h / 14h–18h</div>
-      </div>
+    <div class="hero-visual" data-reveal style="--d:.1s">
+      <div class="ring"></div>
+      <img class="car" src="/img/hero-car.svg" alt="" width="640" height="300">
+      <div class="chip c1"><svg class="ico"><use href="#i-wrench"/></svg>Mécanique toutes marques</div>
+      <div class="chip c3"><svg class="ico"><use href="#i-spray"/></svg>Carrosserie & peinture</div>
+      <div class="chip c2"><svg class="ico"><use href="#i-shield"/></svg>Pièces garanties</div>
+    </div>
+  </div>
+</section>
+
+<section class="quick">
+  <div class="container">
+    <div class="grid">
+      <a href="/devis.html" class="quick-card" data-reveal><span class="qi"><svg class="ico"><use href="#i-doc"/></svg></span><div><strong>Devis en ligne</strong><span>Estimation immédiate, PDF par email</span></div><svg class="ico arrow"><use href="#i-arrow"/></svg></a>
+      <a href="/rendez-vous.html" class="quick-card" data-reveal style="--d:.08s"><span class="qi"><svg class="ico"><use href="#i-cal"/></svg></span><div><strong>Rendez-vous</strong><span>Choisissez votre créneau en ligne</span></div><svg class="ico arrow"><use href="#i-arrow"/></svg></a>
+      <a href="tel:+33434126391" class="quick-card" data-reveal style="--d:.16s"><span class="qi"><svg class="ico"><use href="#i-phone"/></svg></span><div><strong>04 34 12 63 91</strong><span id="open-status-text">Lun–Ven 9h–12h / 14h–18h</span></div><svg class="ico arrow"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true" style="margin-top:56px">
+  <div class="track">
+    <span>Toutes marques</span><span>Renault</span><span>Peugeot</span><span>Citroën</span><span>Volkswagen</span><span>Toyota</span><span>Dacia</span><span>Ford</span><span>BMW</span><span>Mercedes</span><span>Audi</span><span>Fiat</span><span>Opel</span><span>Hyundai</span><span>Kia</span><span>Nissan</span>
+    <span>Toutes marques</span><span>Renault</span><span>Peugeot</span><span>Citroën</span><span>Volkswagen</span><span>Toyota</span><span>Dacia</span><span>Ford</span><span>BMW</span><span>Mercedes</span><span>Audi</span><span>Fiat</span><span>Opel</span><span>Hyundai</span><span>Kia</span><span>Nissan</span>
+  </div>
+</div>
+
+<section class="section" id="prestations">
+  <div class="container">
+    <div class="section-title" data-reveal>
+      <span class="eyebrow">Nos prestations</span>
+      <h2>Tout pour votre véhicule, au même endroit</h2>
+      <p class="muted">Entretien courant, grosses réparations, carrosserie et peinture : notre atelier prend en charge votre véhicule de A à Z.</p>
+    </div>
+    <div class="grid grid-3">
+      <a href="/services.html#entretien" class="card service-card" data-reveal>
+        <div class="icon"><svg class="ico"><use href="#i-wrench"/></svg></div>
+        <h3>Entretien & révision</h3>
+        <ul><li>Vidange, filtres, bougies</li><li>Révision constructeur</li><li>Préparation contrôle technique</li><li>Diagnostic électronique</li></ul>
+        <div class="price"><span><small>Vidange dès</small> 89 €</span><span class="go">Tarifs <svg class="ico ico-sm"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a href="/services.html#freinage" class="card service-card" data-reveal style="--d:.08s">
+        <div class="icon"><svg class="ico"><use href="#i-disc"/></svg></div>
+        <h3>Freinage, pneus & suspension</h3>
+        <ul><li>Plaquettes et disques</li><li>Montage & équilibrage pneus</li><li>Géométrie / parallélisme</li><li>Amortisseurs</li></ul>
+        <div class="price"><span><small>Plaquettes dès</small> 119 €</span><span class="go">Tarifs <svg class="ico ico-sm"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a href="/services.html#mecanique" class="card service-card" data-reveal style="--d:.16s">
+        <div class="icon"><svg class="ico"><use href="#i-engine"/></svg></div>
+        <h3>Mécanique lourde</h3>
+        <ul><li>Distribution, embrayage</li><li>Alternateur, démarreur</li><li>Climatisation</li><li>Échappement</li></ul>
+        <div class="price"><span><small>Distribution dès</small> 549 €</span><span class="go">Tarifs <svg class="ico ico-sm"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a href="/services.html#carrosserie" class="card service-card" data-reveal>
+        <div class="icon"><svg class="ico"><use href="#i-spray"/></svg></div>
+        <h3>Carrosserie & peinture</h3>
+        <ul><li>Rayures, bosses, chocs</li><li>Peinture d’éléments ou complète</li><li>Pare-chocs, pare-brise</li><li>Rénovation phares, lustrage</li></ul>
+        <div class="price"><span><small>Débosselage dès</small> 89 €</span><span class="go">Tarifs <svg class="ico ico-sm"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a href="/devis.html" class="card service-card" data-reveal style="--d:.08s">
+        <div class="icon"><svg class="ico"><use href="#i-doc"/></svg></div>
+        <h3>Devis en ligne instantané</h3>
+        <ul><li>Choisissez vos prestations</li><li>Estimation immédiate</li><li>Devis PDF envoyé par email</li><li>Sans engagement</li></ul>
+        <div class="price"><span><small>Gratuit</small></span><span class="go">Générer mon devis <svg class="ico ico-sm"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a href="/rendez-vous.html" class="card service-card" data-reveal style="--d:.16s">
+        <div class="icon"><svg class="ico"><use href="#i-cal"/></svg></div>
+        <h3>Rendez-vous en ligne</h3>
+        <ul><li>Créneaux en temps réel</li><li>Confirmation par email</li><li>Rappel dans votre agenda</li><li>Annulation en 1 clic</li></ul>
+        <div class="price"><span><small>24h/24</small></span><span class="go">Choisir un créneau <svg class="ico ico-sm"><use href="#i-arrow"/></svg></span></div>
+      </a>
     </div>
   </div>
 </section>
 
 <section class="stats">
   <div class="container">
-    <div><strong>4,9/5</strong><span>Note Google</span></div>
-    <div><strong>77+</strong><span>Avis clients</span></div>
-    <div><strong>Toutes</strong><span>marques acceptées</span></div>
-    <div><strong>24h/24</strong><span>Devis & RDV en ligne</span></div>
+    <div data-reveal><strong data-count="4.9">0</strong><span>Note Google</span></div>
+    <div data-reveal style="--d:.08s"><strong data-count="77" data-suffix="+">0</strong><span>Avis clients</span></div>
+    <div data-reveal style="--d:.16s"><strong>100 %</strong><span>Toutes marques</span></div>
+    <div data-reveal style="--d:.24s"><strong>24h/24</strong><span>Devis & RDV en ligne</span></div>
   </div>
 </section>
 
-<section class="section" id="prestations">
+<section class="section" style="background:var(--surface)">
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">Nos prestations</div>
-      <h2>Tout pour votre véhicule, au même endroit</h2>
-      <p class="muted">Entretien courant, grosses réparations, carrosserie et peinture : notre atelier prend en charge votre véhicule de A à Z.</p>
-    </div>
-    <div class="grid grid-3">
-      <div class="card service-card">
-        <div class="icon">🔧</div>
-        <h3>Entretien & révision</h3>
-        <ul><li>Vidange, filtres, bougies</li><li>Révision constructeur</li><li>Préparation contrôle technique</li><li>Diagnostic électronique</li></ul>
-        <p class="price" style="margin-top:12px">Vidange dès 89 €</p>
-        <a href="/services.html#entretien">Voir les tarifs →</a>
-      </div>
-      <div class="card service-card">
-        <div class="icon">🛞</div>
-        <h3>Freinage, pneus & suspension</h3>
-        <ul><li>Plaquettes et disques</li><li>Montage & équilibrage pneus</li><li>Géométrie / parallélisme</li><li>Amortisseurs</li></ul>
-        <p class="price" style="margin-top:12px">Plaquettes avant dès 119 €</p>
-        <a href="/services.html#freinage">Voir les tarifs →</a>
-      </div>
-      <div class="card service-card">
-        <div class="icon">⚙️</div>
-        <h3>Mécanique lourde</h3>
-        <ul><li>Distribution, embrayage</li><li>Alternateur, démarreur</li><li>Climatisation</li><li>Échappement</li></ul>
-        <p class="price" style="margin-top:12px">Distribution dès 549 €</p>
-        <a href="/services.html#mecanique">Voir les tarifs →</a>
-      </div>
-      <div class="card service-card">
-        <div class="icon">🎨</div>
-        <h3>Carrosserie & peinture</h3>
-        <ul><li>Rayures, bosses, chocs</li><li>Peinture d’éléments ou complète</li><li>Pare-chocs, pare-brise</li><li>Rénovation phares, lustrage</li></ul>
-        <p class="price" style="margin-top:12px">Débosselage dès 89 €</p>
-        <a href="/services.html#carrosserie">Voir les tarifs →</a>
-      </div>
-      <div class="card service-card">
-        <div class="icon">🧾</div>
-        <h3>Devis en ligne instantané</h3>
-        <ul><li>Choisissez vos prestations</li><li>Estimation immédiate</li><li>Devis PDF envoyé par email</li><li>Sans engagement</li></ul>
-        <a href="/devis.html" class="btn btn-primary btn-sm" style="margin-top:14px">Générer mon devis</a>
-      </div>
-      <div class="card service-card">
-        <div class="icon">📅</div>
-        <h3>Rendez-vous en ligne</h3>
-        <ul><li>Créneaux en temps réel</li><li>Confirmation par email</li><li>Rappel dans votre agenda</li><li>Annulation en 1 clic</li></ul>
-        <a href="/rendez-vous.html" class="btn btn-dark btn-sm" style="margin-top:14px">Choisir un créneau</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:#fff">
-  <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">Simple & rapide</div>
+    <div class="section-title" data-reveal>
+      <span class="eyebrow">Simple & rapide</span>
       <h2>Comment ça marche ?</h2>
     </div>
-    <div class="grid grid-3 steps">
-      <div class="step"><h3>Estimez en ligne</h3><p class="muted">Sélectionnez vos prestations dans notre générateur de devis : le prix s’affiche instantanément et vous recevez le devis PDF par email.</p></div>
-      <div class="step"><h3>Réservez votre créneau</h3><p class="muted">Choisissez le jour et l’heure qui vous conviennent dans notre agenda en ligne. Nous confirmons rapidement par email.</p></div>
-      <div class="step"><h3>Déposez votre véhicule</h3><p class="muted">Nous vérifions le véhicule, validons le devis avec vous, et réalisons les travaux dans les délais convenus.</p></div>
+    <div class="steps">
+      <div class="step" data-reveal><div class="num"></div><div><h3>Estimez en ligne</h3><p class="muted">Sélectionnez vos prestations dans notre générateur de devis : le prix s’affiche instantanément et vous recevez le devis PDF par email.</p></div></div>
+      <div class="step" data-reveal style="--d:.1s"><div class="num"></div><div><h3>Réservez votre créneau</h3><p class="muted">Choisissez le jour et l’heure qui vous conviennent dans notre agenda en ligne. Nous confirmons rapidement par email.</p></div></div>
+      <div class="step" data-reveal style="--d:.2s"><div class="num"></div><div><h3>Déposez votre véhicule</h3><p class="muted">Nous vérifions le véhicule, validons le devis avec vous, et réalisons les travaux dans les délais convenus.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section-title">
-      <div class="eyebrow">Ils nous font confiance</div>
+    <div class="section-title" data-reveal>
+      <span class="eyebrow">Ils nous font confiance</span>
       <h2>4,9/5 sur 77 avis Google</h2>
     </div>
-    <div class="grid grid-3">
-      <div class="review"><div class="stars">★★★★★</div><p>« Des professionnels exceptionnels, d’une grande humanité et d’une efficacité hors pair. Je recommande les yeux fermés. »</p><div class="author">Client Google</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>« Accueil très sympathique, travail rapide et bien fait, tarifs corrects. Mon véhicule est reparti comme neuf après la carrosserie. »</p><div class="author">Client Google</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>« Garage sérieux et honnête. Devis respecté, explications claires. Je ne vais plus ailleurs. »</p><div class="author">Client Google</div></div>
+    <div class="reviews">
+      <div class="review" data-reveal><div class="stars">★★★★★</div><p>« Des professionnels exceptionnels, d’une grande humanité et d’une efficacité hors pair. Je recommande les yeux fermés. »</p><div class="author"><span class="avatar">CG</span>Client Google</div></div>
+      <div class="review" data-reveal style="--d:.08s"><div class="stars">★★★★★</div><p>« Accueil très sympathique, travail rapide et bien fait, tarifs corrects. Mon véhicule est reparti comme neuf après la carrosserie. »</p><div class="author"><span class="avatar">CG</span>Client Google</div></div>
+      <div class="review" data-reveal style="--d:.16s"><div class="stars">★★★★★</div><p>« Garage sérieux et honnête. Devis respecté, explications claires. Je ne vais plus ailleurs. »</p><div class="author"><span class="avatar">CG</span>Client Google</div></div>
     </div>
-    <p class="center" style="margin-top:24px"><a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener" class="btn btn-outline">Voir tous les avis sur Google ↗</a></p>
+    <p class="center" style="margin-top:28px" data-reveal><a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener" class="btn btn-outline">Voir tous les avis sur Google ↗</a></p>
   </div>
 </section>
 
 <section class="cta">
   <div class="container">
-    <div><h2>Un bruit suspect ? Une rayure ?</h2><p>Obtenez une estimation en 2 minutes ou appelez-nous directement.</p></div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="/devis.html" class="btn btn-primary">Devis en ligne</a><a href="tel:+33434126391" class="btn btn-outline-light">04 34 12 63 91</a></div>
+    <div data-reveal><h2>Un bruit suspect ? Une rayure ?</h2><p>Obtenez une estimation en 2 minutes ou appelez-nous directement.</p></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap" data-reveal style="--d:.1s"><a href="/devis.html" class="btn btn-dark btn-lg">Devis en ligne</a><a href="tel:+33434126391" class="btn btn-outline btn-lg"><svg class="ico"><use href="#i-phone"/></svg>04 34 12 63 91</a></div>
   </div>
 </section>
 
 <section class="section" id="infos">
   <div class="container">
-    <div class="section-title"><div class="eyebrow">Infos pratiques</div><h2>Nous trouver</h2></div>
+    <div class="section-title" data-reveal><span class="eyebrow">Infos pratiques</span><h2>Nous trouver</h2></div>
     <div class="info-grid">
-      <div class="card">
-        <h3>DYLAN AUTO</h3>
-        <p>6 rue du Ribéral<br>66240 Saint-Estève<br><span class="muted">À 5 min de Perpignan</span></p>
-        <p><a href="tel:+33434126391"><strong>04 34 12 63 91</strong></a><br><a href="tel:+33643211243">06 43 21 12 43</a><br><a href="mailto:contact@dylanauto.fr">contact@dylanauto.fr</a></p>
-        <h3 style="margin-top:20px">Horaires d’ouverture</h3>
+      <div class="card" data-reveal>
+        <span class="open-status" id="open-status">Ouvert</span>
+        <h3 style="margin-top:14px">DYLAN AUTO</h3>
+        <div class="contact-lines">
+          <a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pin"/></svg><span><strong>6 rue du Ribéral</strong><small>66240 Saint-Estève · à 5 min de Perpignan</small></span></a>
+          <a href="tel:+33434126391"><svg class="ico"><use href="#i-phone"/></svg><span><strong>04 34 12 63 91</strong><small>ou 06 43 21 12 43</small></span></a>
+          <a href="mailto:contact@dylanauto.fr"><svg class="ico"><use href="#i-mail"/></svg><span><strong>contact@dylanauto.fr</strong><small>Réponse sous 24h ouvrées</small></span></a>
+        </div>
+        <h3>Horaires d’ouverture</h3>
         <table class="hours-table" id="hours-table">
           <tr data-day="1"><td>Lundi</td><td>9h–12h / 14h–18h</td></tr>
           <tr data-day="2"><td>Mardi</td><td>9h–12h / 14h–18h</td></tr>
@@ -180,9 +196,8 @@
           <tr data-day="6" class="closed"><td>Samedi</td><td>Fermé</td></tr>
           <tr data-day="0" class="closed"><td>Dimanche</td><td>Fermé</td></tr>
         </table>
-        <p style="margin-top:16px"><a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener" class="btn btn-dark btn-sm">Itinéraire Google Maps ↗</a></p>
       </div>
-      <iframe class="map-frame" loading="lazy" title="Plan d’accès DYLAN AUTO" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=DYLAN+AUTO+6+rue+du+Rib%C3%A9ral+66240+Saint-Est%C3%A8ve&output=embed&hl=fr"></iframe>
+      <iframe class="map-frame" data-reveal style="--d:.1s" loading="lazy" title="Plan d’accès DYLAN AUTO" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=DYLAN+AUTO+6+rue+du+Rib%C3%A9ral+66240+Saint-Est%C3%A8ve&output=embed&hl=fr"></iframe>
     </div>
   </div>
 </section>

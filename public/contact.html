@@ -5,10 +5,11 @@
   <meta name="description" content="Contactez le garage DYLAN AUTO à Saint-Estève : téléphone, email, adresse, horaires et formulaire de contact.">
   <link rel="canonical" href="https://dylanauto.fr/contact.html">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -24,23 +25,26 @@
   <div class="container">
     <div class="info-grid">
       <div>
-        <div class="card" style="margin-bottom:22px">
-          <h3>DYLAN AUTO</h3>
-          <p>6 rue du Ribéral<br>66240 Saint-Estève</p>
-          <p>📞 <a href="tel:+33434126391"><strong>04 34 12 63 91</strong></a><br>📱 <a href="tel:+33643211243">06 43 21 12 43</a><br>✉️ <a href="mailto:contact@dylanauto.fr">contact@dylanauto.fr</a></p>
-          <p class="muted" style="font-size:0.9rem">Lundi – Vendredi : 9h–12h / 14h–18h<br>Samedi & dimanche : fermé</p>
-          <a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener" class="btn btn-dark btn-sm">Itinéraire Google Maps ↗</a>
+        <div class="card" style="margin-bottom:20px" data-reveal>
+          <span class="open-status" id="open-status">Ouvert</span>
+          <h3 style="margin-top:14px">DYLAN AUTO</h3>
+          <div class="contact-lines">
+            <a href="https://maps.app.goo.gl/pozcmeW7yyApv7E49" target="_blank" rel="noopener"><svg class="ico"><use href="#i-pin"/></svg><span><strong>6 rue du Ribéral</strong><small>66240 Saint-Estève</small></span></a>
+            <a href="tel:+33434126391"><svg class="ico"><use href="#i-phone"/></svg><span><strong>04 34 12 63 91</strong><small>ou 06 43 21 12 43</small></span></a>
+            <a href="mailto:contact@dylanauto.fr"><svg class="ico"><use href="#i-mail"/></svg><span><strong>contact@dylanauto.fr</strong><small>Réponse sous 24h ouvrées</small></span></a>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><strong>Lun – Ven : 9h–12h / 14h–18h</strong><small>Samedi & dimanche : fermé</small></span></div>
+          </div>
         </div>
-        <iframe class="map-frame" style="min-height:280px" loading="lazy" title="Plan d’accès DYLAN AUTO" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=DYLAN+AUTO+6+rue+du+Rib%C3%A9ral+66240+Saint-Est%C3%A8ve&output=embed&hl=fr"></iframe>
+        <iframe class="map-frame" style="min-height:300px" data-reveal loading="lazy" title="Plan d’accès DYLAN AUTO" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=DYLAN+AUTO+6+rue+du+Rib%C3%A9ral+66240+Saint-Est%C3%A8ve&output=embed&hl=fr"></iframe>
       </div>
-      <div class="card">
-        <h3>Envoyer un message</h3>
+      <div class="card form-card" data-reveal style="--d:.1s">
+        <h3><svg class="ico" style="color:var(--brand-ink)"><use href="#i-mail"/></svg>Envoyer un message</h3>
         <form id="contact-form" class="form" novalidate>
           <div class="form-row">
             <div><label for="c-name">Nom et prénom <span class="req">*</span></label><input type="text" id="c-name" name="name" required autocomplete="name"><div class="field-error" id="err-name"></div></div>
-            <div><label for="c-phone">Téléphone</label><input type="tel" id="c-phone" name="phone" autocomplete="tel"><div class="field-error" id="err-phone"></div></div>
+            <div><label for="c-phone">Téléphone</label><input type="tel" id="c-phone" name="phone" autocomplete="tel" inputmode="tel"><div class="field-error" id="err-phone"></div></div>
           </div>
-          <div><label for="c-email">Email <span class="req">*</span></label><input type="email" id="c-email" name="email" required autocomplete="email"><div class="field-error" id="err-email"></div></div>
+          <div><label for="c-email">Email <span class="req">*</span></label><input type="email" id="c-email" name="email" required autocomplete="email" inputmode="email"><div class="field-error" id="err-email"></div></div>
           <div><label for="c-subject">Sujet</label>
             <select id="c-subject" name="subject"><option>Demande d’information</option><option>Devis particulier</option><option>Suivi de réparation</option><option>Carrosserie / sinistre assurance</option><option>Autre</option></select></div>
           <div><label for="c-message">Message <span class="req">*</span></label><textarea id="c-message" name="message" required minlength="10" placeholder="Décrivez votre demande…"></textarea><div class="field-error" id="err-message"></div></div>
@@ -48,7 +52,7 @@
           <div class="honeypot" aria-hidden="true"><label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="alert alert-err" id="contact-error"></div>
           <div class="alert alert-ok" id="contact-ok">✅ Message envoyé ! Nous vous répondons au plus vite. Un accusé de réception vous a été envoyé par email.</div>
-          <button type="submit" class="btn btn-primary btn-block" id="contact-submit">Envoyer le message</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="contact-submit"><svg class="ico"><use href="#i-arrow"/></svg>Envoyer le message</button>
         </form>
       </div>
     </div>

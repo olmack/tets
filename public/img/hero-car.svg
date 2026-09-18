@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-label="Illustration d'une voiture">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3a5e"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd3ff" stop-opacity=".85"/><stop offset="1" stop-color="#3b82f6" stop-opacity=".35"/></linearGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#ff8a1f"/></linearGradient>
+    <radialGradient id="beam" cx="0" cy=".5" r="1"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".9"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+  </defs>
+  <ellipse cx="320" cy="262" rx="270" ry="22" fill="url(#shadow)"/>
+  <path d="M598 150 L640 140 L640 175 L598 178 Z" fill="url(#beam)" opacity=".8"/>
+  <path d="M42 200 L58 150 Q66 128 92 122 L186 106 L248 66 Q262 56 282 55 L410 55 Q438 55 458 70 L520 118 L572 128 Q604 134 610 156 L616 200 Q616 214 602 214 L58 214 Q42 214 42 200 Z" fill="url(#body)"/>
+  <path d="M92 122 L186 106 L248 66 Q262 56 282 55 L410 55 Q438 55 458 70 L520 118 Z" fill="#1e2a4a" opacity=".55"/>
+  <path d="M258 72 L282 66 L392 66 L400 112 L214 116 Z" fill="url(#glass)"/>
+  <path d="M410 66 Q432 66 446 78 L494 116 L412 114 Z" fill="url(#glass)"/>
+  <path d="M262 70 L284 68 L292 110 L226 112 Z" fill="#fff" opacity=".12"/>
+  <path d="M60 164 L560 152 L566 166 L60 178 Z" fill="url(#stripe)" opacity=".95"/>
+  <rect x="404" y="120" width="34" height="5" rx="2.5" fill="#94a3b8"/>
+  <rect x="300" y="122" width="34" height="5" rx="2.5" fill="#94a3b8"/>
+  <path d="M572 132 L606 138 Q612 146 610 158 L574 154 Z" fill="#ffd166"/>
+  <path d="M574 144 L608 148 L610 158 L574 154 Z" fill="#ff8a1f" opacity=".7"/>
+  <path d="M46 166 L60 150 L64 176 L46 180 Z" fill="#ef4444"/>
+  <path d="M56 214 L80 214 L80 222 Q80 226 76 226 L60 226 Q56 226 56 222 Z M552 214 L578 214 L578 222 Q578 226 574 226 L556 226 Q552 226 552 222 Z" fill="#0b1220"/>
+  <g>
+    <circle cx="160" cy="212" r="46" fill="#0b1220"/>
+    <circle cx="160" cy="212" r="30" fill="#cbd5e1"/>
+    <circle cx="160" cy="212" r="26" fill="#1e293b"/>
+    <g fill="#94a3b8"><path d="M158 190 h4 v20 h-4z"/><path d="M158 214 h4 v20 h-4z"/><path d="M138 210 h20 v4 h-20z"/><path d="M162 210 h20 v4 h-20z"/></g>
+    <circle cx="160" cy="212" r="7" fill="#f5b32b"/>
+  </g>
+  <g>
+    <circle cx="480" cy="212" r="46" fill="#0b1220"/>
+    <circle cx="480" cy="212" r="30" fill="#cbd5e1"/>
+    <circle cx="480" cy="212" r="26" fill="#1e293b"/>
+    <g fill="#94a3b8"><path d="M478 190 h4 v20 h-4z"/><path d="M478 214 h4 v20 h-4z"/><path d="M458 210 h20 v4 h-20z"/><path d="M482 210 h20 v4 h-20z"/></g>
+    <circle cx="480" cy="212" r="7" fill="#f5b32b"/>
+  </g>
+  <path d="M120 96 L600 84" stroke="#fff" stroke-opacity=".08" stroke-width="2" stroke-linecap="round" filter="url(#soft)"/>
+</svg>

@@ -9,22 +9,24 @@
   <link rel="stylesheet" href="/css/style.css">
   <style>
     body { background: #f3f4f6; }
-    .admin-header { background: var(--navy); color: #fff; padding: 14px 0; }
+    .admin-header { background: var(--ink); color: #fff; padding: 14px 0; }
     .admin-header .container { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .admin-header .tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    @media (max-width: 640px) { .admin-header .logo { font-size: 1.05rem; } .admin-header .tools { width: 100%; } .admin-header .tools .btn { flex: 1; padding-inline: 8px; font-size: .82rem; } }
     .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 20px 0; }
-    .tabs button { background: #fff; border: 1px solid var(--border); padding: 10px 16px; border-radius: 10px; cursor: pointer; font: inherit; font-weight: 700; }
-    .tabs button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-    .tabs .pill { background: var(--amber); color: var(--navy); border-radius: 999px; padding: 1px 8px; font-size: 0.75rem; margin-left: 6px; }
+    .tabs button { background: #fff; border: 1px solid var(--line); padding: 10px 16px; border-radius: 10px; cursor: pointer; font: inherit; font-weight: 700; }
+    .tabs button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .tabs .pill { background: var(--brand); color: var(--ink); border-radius: 999px; padding: 1px 8px; font-size: 0.75rem; margin-left: 6px; }
     .tabs .pill:empty { display: none; }
     .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     @media (max-width: 800px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
-    .kpi { background: #fff; border-radius: 12px; padding: 16px; border: 1px solid var(--border); }
+    .kpi { background: #fff; border-radius: 12px; padding: 16px; border: 1px solid var(--line); }
     .kpi strong { display: block; font-size: 1.8rem; }
     .kpi span { color: var(--muted); font-size: 0.85rem; }
     .panel { display: none; }
     .panel.active { display: block; }
     table.list { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; font-size: 0.9rem; }
-    table.list th, table.list td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    table.list th, table.list td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
     table.list th { background: #f9fafb; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
     .wrap-table { overflow-x: auto; }
     .status { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
@@ -33,15 +35,15 @@
     .s-annule, .s-refuse { background: #fee2e2; color: #991b1b; }
     .s-termine { background: #e5e7eb; color: #374151; }
     .actions { display: flex; gap: 4px; flex-wrap: wrap; }
-    .actions button, .actions a { font: inherit; font-size: 0.78rem; padding: 5px 9px; border-radius: 6px; border: 1px solid var(--border); background: #fff; cursor: pointer; text-decoration: none; color: var(--text); }
+    .actions button, .actions a { font: inherit; font-size: 0.78rem; padding: 5px 9px; border-radius: 6px; border: 1px solid var(--line); background: #fff; cursor: pointer; text-decoration: none; color: var(--text); }
     .actions .ok { background: #dcfce7; border-color: #bbf7d0; }
     .actions .ko { background: #fee2e2; border-color: #fecaca; }
     .items-mini { font-size: 0.8rem; color: var(--muted); margin: 4px 0 0; padding-left: 16px; }
     .toolbar { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-bottom: 14px; }
     .toolbar > div { min-width: 140px; }
     .filter { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-    .filter button { font: inherit; font-size: 0.8rem; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border); background: #fff; cursor: pointer; }
-    .filter button.active { background: var(--amber); border-color: var(--amber); font-weight: 700; }
+    .filter button { font: inherit; font-size: 0.8rem; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+    .filter button.active { background: var(--brand); border-color: var(--brand); font-weight: 700; }
     pre.msg { white-space: pre-wrap; font: inherit; margin: 0; max-width: 420px; }
     .banner { background: #fef3c7; border: 1px solid #fcd34d; padding: 10px 14px; border-radius: 10px; margin-bottom: 14px; font-size: 0.9rem; }
   </style>
@@ -49,10 +51,10 @@
 <body>
 <div class="admin-header">
   <div class="container">
-    <a href="/" class="logo" style="color:#fff"><img src="/img/logo.svg" alt="" width="36" height="36"><span>DYLAN <em>AUTO</em> · Administration</span></a>
-    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-      <button class="btn btn-sm btn-outline-light" id="refresh">↻ Actualiser</button>
-      <button class="btn btn-sm btn-outline-light" id="test-email">✉️ Tester l’envoi d’email</button>
+    <a href="/" class="logo" style="color:#fff"><img src="/img/logo.svg" alt="" width="36" height="36"><span>DYLAN <em>AUTO</em> · Admin</span></a>
+    <div class="tools">
+      <button class="btn btn-sm btn-ghost-light" id="refresh">↻ Actualiser</button>
+      <button class="btn btn-sm btn-ghost-light" id="test-email">✉️ Tester l’envoi d’email</button>
       <a href="/" class="btn btn-sm btn-primary" target="_blank">Voir le site ↗</a>
     </div>
   </div>

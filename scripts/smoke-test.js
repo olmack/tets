@@ -30,7 +30,7 @@ const auth = { Authorization: 'Basic ' + Buffer.from('admin:test-password').toSt
     const res = await fetch(base + p);
     const html = await res.text();
     assert.strictEqual(res.status, 200, p);
-    assert(html.includes('<header class="header">') && html.includes('<footer class="footer">'), `${p} : en-tête/pied de page injectés`);
+    assert(html.includes('class="header"') && html.includes('<footer class="footer">'), `${p} : en-tête/pied de page injectés`);
     assert(!html.includes('{{header}}'), `${p} : tokens remplacés`);
   }
   step('Pages publiques servies avec en-tête et pied de page');

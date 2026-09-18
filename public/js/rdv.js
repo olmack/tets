@@ -27,12 +27,13 @@
       btn.type = 'button';
       btn.className = 'day';
       btn.textContent = Number(d.date.slice(8));
-      const disabled = d.closed || d.past || d.tooFar;
+      const noMoreToday = d.date === todayStr && d.free === 0;
+      const disabled = d.closed || d.past || d.tooFar || noMoreToday;
       btn.disabled = disabled;
       if (!disabled) btn.classList.add(d.free > 0 ? 'free' : 'full');
       if (d.date === todayStr) btn.classList.add('today');
       if (d.date === selectedDate) btn.classList.add('selected');
-      btn.title = d.closed ? d.closedReason : d.past ? 'Date passée' : d.tooFar ? 'Trop éloigné' : `${d.free} créneau(x) disponible(s)`;
+      btn.title = d.closed ? d.closedReason : d.past ? 'Date passée' : noMoreToday ? 'Plus de créneau aujourd’hui' : d.tooFar ? 'Trop éloigné' : `${d.free} créneau(x) disponible(s)`;
       btn.addEventListener('click', () => selectDate(d.date));
       grid.appendChild(btn);
     }
@@ -55,6 +56,7 @@
       const afternoon = data.slots.filter((s) => s.time >= '13:00');
       const block = (label, list) => list.length ? `<p class="slot-period">${label}</p><div class="slots">${list.map((s) => `<button type="button" class="slot" data-time="${s.time}" ${s.available ? '' : 'disabled'}>${s.time}</button>`).join('')}</div>` : '';
       slotsWrap.innerHTML = block('Matin', morning) + block('Après-midi', afternoon);
+      if (window.innerWidth < 960) slotsWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
       if (!data.slots.some((s) => s.available)) slotsWrap.insertAdjacentHTML('beforeend', '<p class="muted" style="margin-top:10px">Plus de créneau disponible ce jour, choisissez une autre date.</p>');
       slotsWrap.querySelectorAll('.slot:not(:disabled)').forEach((b) => b.addEventListener('click', () => {
         selectedTime = b.dataset.time;
@@ -70,9 +72,19 @@
   function updateChosen() {
     if (selectedDate && selectedTime) {
       const [y, m, d] = selectedDate.split('-');
-      chosen.style.display = 'block';
-      chosen.textContent = `📅 Rendez-vous choisi : ${d}/${m}/${y} à ${selectedTime}`;
-    } else chosen.style.display = 'none';
+      chosen.style.display = 'flex';
+      chosen.innerHTML = `<svg class="ico"><use href="#i-cal"/></svg><span>Rendez-vous choisi : <strong>${d}/${m}/${y} à ${selectedTime}</strong></span>`;
+      setStep(2);
+      if (window.innerWidth < 960) document.getElementById('etape-2').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else { chosen.style.display = 'none'; setStep(1); }
+  }
+
+  function setStep(n) {
+    document.querySelectorAll('#stepper a').forEach((a) => {
+      const s = Number(a.dataset.step);
+      a.classList.toggle('current', s === n);
+      a.classList.toggle('done', s < n);
+    });
   }
 
   document.getElementById('prev-month').addEventListener('click', () => { view.month--; if (view.month < 1) { view.month = 12; view.year--; } renderMonth(); });
@@ -85,6 +97,7 @@
     if (!selectedDate || !selectedTime) {
       document.getElementById('err-slot').classList.add('show');
       document.querySelector('.calendar').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      DA.toast('Choisissez d’abord une date et un horaire.');
       return;
     }
     if (!DA.validateRequired(form)) return;
@@ -94,6 +107,7 @@
     try {
       const r = await DA.api('/api/appointments', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
       form.style.display = 'none';
+      document.getElementById('stepper').style.display = 'none';
       document.getElementById('result-text').innerHTML = `Votre demande de rendez-vous pour le <strong>${r.label} à ${r.time}</strong> est enregistrée sous la référence <strong>${r.reference}</strong>.`;
       const box = document.getElementById('rdv-result');
       box.style.display = 'block';
