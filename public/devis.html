@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <title>Devis en ligne gratuit – DYLAN AUTO Saint-Estève</title>
+  <meta name="description" content="Générez votre devis automobile en 2 minutes : choisissez vos prestations, obtenez le prix immédiatement et recevez votre devis PDF par email.">
+  <link rel="canonical" href="https://dylanauto.fr/devis.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+{{header}}
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Accueil</a> › Devis en ligne</div>
+    <h1>Générateur de devis</h1>
+    <p>Sélectionnez votre véhicule et les prestations souhaitées : l’estimation s’affiche en direct. Recevez ensuite votre devis PDF par email, gratuitement et sans engagement.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <form id="devis-form" class="devis-layout" novalidate>
+      <div>
+        <div class="card" style="margin-bottom:22px">
+          <h3>1. Votre type de véhicule</h3>
+          <div class="vehicle-types" id="vehicle-types"></div>
+        </div>
+        <div class="card" style="margin-bottom:22px">
+          <h3>2. Les prestations souhaitées</h3>
+          <p class="muted" style="font-size:0.9rem">Cochez une ou plusieurs prestations. Les prix s’ajustent automatiquement selon votre véhicule.</p>
+          <div id="service-cats"><p class="muted">Chargement…</p></div>
+          <div class="field-error" id="err-services">Sélectionnez au moins une prestation.</div>
+        </div>
+        <div class="card" id="coords-card">
+          <h3>3. Vos coordonnées</h3>
+          <div class="form">
+            <div class="form-row">
+              <div><label for="q-name">Nom et prénom <span class="req">*</span></label><input type="text" id="q-name" name="name" required autocomplete="name"><div class="field-error" id="err-name"></div></div>
+              <div><label for="q-phone">Téléphone <span class="req">*</span></label><input type="tel" id="q-phone" name="phone" required autocomplete="tel" placeholder="06 12 34 56 78"><div class="field-error" id="err-phone"></div></div>
+            </div>
+            <div><label for="q-email">Email <span class="req">*</span></label><input type="email" id="q-email" name="email" required autocomplete="email"><div class="hint">Votre devis PDF sera envoyé à cette adresse.</div><div class="field-error" id="err-email"></div></div>
+            <div class="form-row-3 form-row">
+              <div><label for="q-brand">Marque</label><input type="text" id="q-brand" name="brand" placeholder="Renault, Peugeot…"></div>
+              <div><label for="q-model">Modèle</label><input type="text" id="q-model" name="model" placeholder="Clio, 308…"></div>
+              <div><label for="q-year">Année</label><input type="number" id="q-year" name="year" min="1980" max="2030" placeholder="2018"></div>
+            </div>
+            <div class="form-row">
+              <div><label for="q-plate">Immatriculation</label><input type="text" id="q-plate" name="plate" placeholder="AB-123-CD" style="text-transform:uppercase"></div>
+              <div><label for="q-km">Kilométrage</label><input type="number" id="q-km" name="km" min="0" placeholder="85000"></div>
+            </div>
+            <div><label for="q-message">Précisions (symptômes, dégâts, urgence…)</label><textarea id="q-message" name="message" placeholder="Ex : bruit au freinage depuis une semaine, rayure sur la portière avant gauche…"></textarea></div>
+            <div><label for="q-photos">Photos (carrosserie, dégâts) – facultatif</label><input type="file" id="q-photos" name="photos" accept="image/*" multiple><div class="hint">Jusqu’à 3 photos de 5 Mo maximum. Très utile pour la carrosserie.</div><div class="field-error" id="err-photos"></div></div>
+            <label class="checkbox"><input type="checkbox" id="q-consent" required> <span>J’accepte que mes données soient utilisées pour traiter ma demande de devis. <a href="/mentions-legales.html#rgpd">En savoir plus</a></span></label>
+            <div class="honeypot" aria-hidden="true"><label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          </div>
+        </div>
+      </div>
+      <aside class="summary">
+        <div class="card">
+          <h3>Votre estimation</h3>
+          <div id="summary-body"><p class="empty">Sélectionnez un véhicule et des prestations pour voir votre estimation.</p></div>
+          <div class="total"><span>Total TTC estimé</span><strong id="total-ttc">0 €</strong></div>
+          <p class="hint" id="pricing-note" style="margin-top:10px"></p>
+          <div class="alert alert-err" id="devis-error"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="devis-submit" style="margin-top:16px">Recevoir mon devis PDF par email</button>
+          <p class="hint center" style="margin-top:10px">Gratuit · Sans engagement · Réponse rapide</p>
+        </div>
+      </aside>
+    </form>
+    <div id="devis-result" class="result-box" style="display:none;max-width:720px;margin:0 auto">
+      <h2>✅ Votre devis est envoyé !</h2>
+      <p>Référence <strong id="result-ref"></strong>. Vous allez recevoir le devis PDF par email dans quelques instants (vérifiez vos courriers indésirables). Nous vous recontactons rapidement pour le valider.</p>
+      <div id="result-items"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px"><a href="/rendez-vous.html" class="btn btn-primary">Prendre rendez-vous maintenant</a><a href="/" class="btn btn-outline">Retour à l’accueil</a></div>
+    </div>
+  </div>
+</section>
+{{footer}}
+<script src="/js/devis.js"></script>
+</body>
+</html>

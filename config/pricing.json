@@ -1,0 +1,75 @@
+{
+  "note": "Prix indicatifs TTC, main d'œuvre incluse, pièces de qualité équivalente à l'origine. Le devis définitif est établi après examen du véhicule.",
+  "vehicleTypes": [
+    { "id": "citadine", "label": "Citadine (Clio, 208, Polo…)", "coef": 1.0 },
+    { "id": "compacte", "label": "Compacte / Berline (Golf, 308, Mégane…)", "coef": 1.1 },
+    { "id": "suv", "label": "SUV / 4x4 / Monospace", "coef": 1.25 },
+    { "id": "utilitaire", "label": "Utilitaire", "coef": 1.3 },
+    { "id": "premium", "label": "Premium / Sportive (BMW, Mercedes, Audi…)", "coef": 1.4 }
+  ],
+  "categories": [
+    {
+      "id": "entretien",
+      "label": "Entretien & révision",
+      "services": [
+        { "id": "vidange", "label": "Vidange + filtre à huile", "price": 89, "unit": "forfait" },
+        { "id": "revision", "label": "Révision complète (vidange + filtres + contrôle 30 points)", "price": 189, "unit": "forfait" },
+        { "id": "filtre-air", "label": "Remplacement filtre à air", "price": 35, "unit": "forfait" },
+        { "id": "filtre-habitacle", "label": "Remplacement filtre d'habitacle", "price": 39, "unit": "forfait" },
+        { "id": "bougies", "label": "Remplacement bougies d'allumage", "price": 79, "unit": "forfait" },
+        { "id": "batterie", "label": "Remplacement batterie", "price": 149, "unit": "forfait" },
+        { "id": "pre-ct", "label": "Préparation au contrôle technique", "price": 59, "unit": "forfait" },
+        { "id": "diagnostic", "label": "Diagnostic électronique (valise)", "price": 49, "unit": "forfait" }
+      ]
+    },
+    {
+      "id": "freinage",
+      "label": "Freinage & suspension",
+      "services": [
+        { "id": "plaquettes-av", "label": "Plaquettes de frein avant", "price": 119, "unit": "forfait" },
+        { "id": "plaquettes-ar", "label": "Plaquettes de frein arrière", "price": 109, "unit": "forfait" },
+        { "id": "disques-plaquettes-av", "label": "Disques + plaquettes avant", "price": 259, "unit": "forfait" },
+        { "id": "disques-plaquettes-ar", "label": "Disques + plaquettes arrière", "price": 239, "unit": "forfait" },
+        { "id": "purge-freins", "label": "Purge du liquide de frein", "price": 69, "unit": "forfait" },
+        { "id": "amortisseurs-av", "label": "Amortisseurs avant (la paire)", "price": 299, "unit": "forfait" },
+        { "id": "amortisseurs-ar", "label": "Amortisseurs arrière (la paire)", "price": 249, "unit": "forfait" }
+      ]
+    },
+    {
+      "id": "pneus",
+      "label": "Pneumatiques",
+      "services": [
+        { "id": "montage-pneu", "label": "Montage + équilibrage (par pneu, hors pneu)", "price": 18, "unit": "par pneu", "quantity": true, "max": 4 },
+        { "id": "geometrie", "label": "Géométrie / parallélisme", "price": 79, "unit": "forfait" },
+        { "id": "permutation", "label": "Permutation des pneus", "price": 29, "unit": "forfait" }
+      ]
+    },
+    {
+      "id": "mecanique",
+      "label": "Mécanique lourde",
+      "services": [
+        { "id": "distribution", "label": "Kit de distribution + pompe à eau", "price": 549, "unit": "à partir de" },
+        { "id": "embrayage", "label": "Remplacement embrayage", "price": 649, "unit": "à partir de" },
+        { "id": "alternateur", "label": "Remplacement alternateur", "price": 349, "unit": "à partir de" },
+        { "id": "demarreur", "label": "Remplacement démarreur", "price": 299, "unit": "à partir de" },
+        { "id": "clim-recharge", "label": "Recharge climatisation", "price": 89, "unit": "forfait" },
+        { "id": "echappement", "label": "Remplacement silencieux d'échappement", "price": 199, "unit": "à partir de" }
+      ]
+    },
+    {
+      "id": "carrosserie",
+      "label": "Carrosserie & peinture",
+      "services": [
+        { "id": "rayure", "label": "Retouche rayure (par élément)", "price": 149, "unit": "par élément", "quantity": true, "max": 6 },
+        { "id": "debosselage", "label": "Débosselage sans peinture (par bosse)", "price": 89, "unit": "par bosse", "quantity": true, "max": 10 },
+        { "id": "peinture-element", "label": "Peinture complète d'un élément (aile, porte, capot…)", "price": 349, "unit": "par élément", "quantity": true, "max": 8 },
+        { "id": "pare-chocs", "label": "Réparation + peinture pare-chocs", "price": 299, "unit": "à partir de" },
+        { "id": "remplacement-pare-chocs", "label": "Remplacement pare-chocs (pièce + peinture + pose)", "price": 549, "unit": "à partir de" },
+        { "id": "pare-brise", "label": "Remplacement pare-brise", "price": 349, "unit": "à partir de" },
+        { "id": "phares", "label": "Rénovation optiques de phares (la paire)", "price": 79, "unit": "forfait" },
+        { "id": "polissage", "label": "Polissage / lustrage complet", "price": 199, "unit": "forfait" },
+        { "id": "peinture-complete", "label": "Peinture complète du véhicule", "price": 2490, "unit": "à partir de" }
+      ]
+    }
+  ]
+}

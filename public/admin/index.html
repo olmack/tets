@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administration – DYLAN AUTO</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: #f3f4f6; }
+    .admin-header { background: var(--navy); color: #fff; padding: 14px 0; }
+    .admin-header .container { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 20px 0; }
+    .tabs button { background: #fff; border: 1px solid var(--border); padding: 10px 16px; border-radius: 10px; cursor: pointer; font: inherit; font-weight: 700; }
+    .tabs button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .tabs .pill { background: var(--amber); color: var(--navy); border-radius: 999px; padding: 1px 8px; font-size: 0.75rem; margin-left: 6px; }
+    .tabs .pill:empty { display: none; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 800px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+    .kpi { background: #fff; border-radius: 12px; padding: 16px; border: 1px solid var(--border); }
+    .kpi strong { display: block; font-size: 1.8rem; }
+    .kpi span { color: var(--muted); font-size: 0.85rem; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    table.list { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; font-size: 0.9rem; }
+    table.list th, table.list td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    table.list th { background: #f9fafb; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+    .wrap-table { overflow-x: auto; }
+    .status { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+    .s-en_attente, .s-nouveau { background: #fef3c7; color: #92400e; }
+    .s-confirme, .s-accepte, .s-traite, .s-lu { background: #dcfce7; color: #166534; }
+    .s-annule, .s-refuse { background: #fee2e2; color: #991b1b; }
+    .s-termine { background: #e5e7eb; color: #374151; }
+    .actions { display: flex; gap: 4px; flex-wrap: wrap; }
+    .actions button, .actions a { font: inherit; font-size: 0.78rem; padding: 5px 9px; border-radius: 6px; border: 1px solid var(--border); background: #fff; cursor: pointer; text-decoration: none; color: var(--text); }
+    .actions .ok { background: #dcfce7; border-color: #bbf7d0; }
+    .actions .ko { background: #fee2e2; border-color: #fecaca; }
+    .items-mini { font-size: 0.8rem; color: var(--muted); margin: 4px 0 0; padding-left: 16px; }
+    .toolbar { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-bottom: 14px; }
+    .toolbar > div { min-width: 140px; }
+    .filter { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .filter button { font: inherit; font-size: 0.8rem; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border); background: #fff; cursor: pointer; }
+    .filter button.active { background: var(--amber); border-color: var(--amber); font-weight: 700; }
+    pre.msg { white-space: pre-wrap; font: inherit; margin: 0; max-width: 420px; }
+    .banner { background: #fef3c7; border: 1px solid #fcd34d; padding: 10px 14px; border-radius: 10px; margin-bottom: 14px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+<div class="admin-header">
+  <div class="container">
+    <a href="/" class="logo" style="color:#fff"><img src="/img/logo.svg" alt="" width="36" height="36"><span>DYLAN <em>AUTO</em> · Administration</span></a>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <button class="btn btn-sm btn-outline-light" id="refresh">↻ Actualiser</button>
+      <button class="btn btn-sm btn-outline-light" id="test-email">✉️ Tester l’envoi d’email</button>
+      <a href="/" class="btn btn-sm btn-primary" target="_blank">Voir le site ↗</a>
+    </div>
+  </div>
+</div>
+<main class="container" style="padding-bottom:60px">
+  <div id="smtp-banner" class="banner" style="display:none;margin-top:16px">⚠️ L’envoi d’emails n’est pas configuré (SMTP_HOST vide dans le fichier .env). Les demandes sont bien enregistrées ici, mais aucun email n’est envoyé.</div>
+  <div class="kpis" style="margin-top:20px">
+    <div class="kpi"><strong id="k-pending">–</strong><span>RDV à confirmer</span></div>
+    <div class="kpi"><strong id="k-today">–</strong><span>RDV aujourd’hui</span></div>
+    <div class="kpi"><strong id="k-quotes">–</strong><span>Devis à traiter</span></div>
+    <div class="kpi"><strong id="k-messages">–</strong><span>Messages non lus</span></div>
+  </div>
+  <div class="tabs">
+    <button data-tab="rdv" class="active">📅 Rendez-vous <span class="pill" id="p-rdv"></span></button>
+    <button data-tab="devis">🧾 Devis <span class="pill" id="p-devis"></span></button>
+    <button data-tab="messages">✉️ Messages <span class="pill" id="p-messages"></span></button>
+    <button data-tab="fermetures">🚫 Fermetures / congés</button>
+    <button data-tab="aide">❓ Aide</button>
+  </div>
+
+  <section class="panel active" id="panel-rdv">
+    <div class="filter" id="rdv-filter"><button data-f="all" class="active">Tous à venir</button><button data-f="en_attente">À confirmer</button><button data-f="confirme">Confirmés</button><button data-f="today">Aujourd’hui</button><button data-f="past">Passés</button></div>
+    <div class="wrap-table"><table class="list"><thead><tr><th>Date</th><th>Client</th><th>Véhicule</th><th>Prestation</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="rdv-body"></tbody></table></div>
+  </section>
+
+  <section class="panel" id="panel-devis">
+    <div class="filter" id="devis-filter"><button data-f="all" class="active">Tous</button><button data-f="nouveau">Nouveaux</button><button data-f="traite">Traités</button><button data-f="accepte">Acceptés</button><button data-f="refuse">Refusés</button></div>
+    <div class="wrap-table"><table class="list"><thead><tr><th>Réf.</th><th>Client</th><th>Véhicule</th><th>Prestations</th><th>Total TTC</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="devis-body"></tbody></table></div>
+  </section>
+
+  <section class="panel" id="panel-messages">
+    <div class="wrap-table"><table class="list"><thead><tr><th>Date</th><th>Expéditeur</th><th>Sujet / message</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="messages-body"></tbody></table></div>
+  </section>
+
+  <section class="panel" id="panel-fermetures">
+    <div class="card" style="margin-bottom:16px">
+      <h3>Bloquer des dates (congés, jour de fermeture exceptionnelle)</h3>
+      <p class="muted" style="font-size:0.9rem">Les clients ne pourront pas réserver sur ces dates. Les week-ends et jours fériés sont déjà bloqués automatiquement.</p>
+      <form class="toolbar" id="closure-form">
+        <div><label for="cl-from">Du</label><input type="date" id="cl-from" required></div>
+        <div><label for="cl-to">Au (inclus)</label><input type="date" id="cl-to"></div>
+        <div style="flex:1"><label for="cl-reason">Motif (affiché aux clients)</label><input type="text" id="cl-reason" placeholder="Congés annuels" value="Congés"></div>
+        <button class="btn btn-dark btn-sm" type="submit">Bloquer</button>
+      </form>
+    </div>
+    <div class="wrap-table"><table class="list"><thead><tr><th>Date</th><th>Motif</th><th></th></tr></thead><tbody id="closures-body"></tbody></table></div>
+  </section>
+
+  <section class="panel" id="panel-aide">
+    <div class="card">
+      <h3>Comment ça marche ?</h3>
+      <ul style="line-height:1.9">
+        <li><strong>Rendez-vous :</strong> chaque demande en ligne arrive « à confirmer ». Cliquez <em>Confirmer</em> : le client reçoit automatiquement un email de confirmation. <em>Annuler</em> lui envoie un email d’annulation. Le créneau est bloqué tant que le RDV est en attente ou confirmé.</li>
+        <li><strong>Devis :</strong> le client reçoit un devis estimatif PDF automatiquement. Vous recevez le même PDF par email, avec ses photos éventuelles. Marquez-le <em>Traité</em> une fois recontacté. Le bouton <em>PDF</em> réouvre le devis.</li>
+        <li><strong>Messages :</strong> vous recevez chaque message par email ; répondez-y directement depuis votre messagerie (le « Répondre à » pointe vers le client).</li>
+        <li><strong>Fermetures :</strong> bloquez vos congés pour que personne ne réserve pendant votre absence.</li>
+        <li><strong>Tarifs :</strong> modifiez le fichier <code>config/pricing.json</code> sur le serveur pour changer les prix, puis redémarrez le site. Les horaires sont dans <code>config/garage.json</code>.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script src="/js/main.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
