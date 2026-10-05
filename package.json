@@ -1,0 +1,17 @@
+{
+  "name": "dylan-auto-website",
+  "version": "1.0.0",
+  "description": "Site web complet du garage DYLAN AUTO (Saint-Estève) : vitrine, générateur de devis, prise de rendez-vous, formulaire de contact, espace administration.",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server/index.js",
+    "test": "node --disable-warning=ExperimentalWarning scripts/smoke-test.js",
+    "test-email": "node --disable-warning=ExperimentalWarning scripts/test-email.js"
+  },
+  "license": "UNLICENSED"
+}

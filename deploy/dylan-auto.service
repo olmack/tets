@@ -1,0 +1,17 @@
+# Service systemd : copier dans /etc/systemd/system/dylan-auto.service
+# puis : sudo systemctl daemon-reload && sudo systemctl enable --now dylan-auto
+[Unit]
+Description=Site web DYLAN AUTO
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/dylan-auto
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning server/index.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

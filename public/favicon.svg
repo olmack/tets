@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Logo DYLAN AUTO">
+  <rect width="64" height="64" rx="14" fill="#111827"/>
+  <path d="M14 38 L20 26 Q21 24 23 24 L41 24 Q43 24 44 26 L50 38 Z" fill="#f59e0b"/>
+  <rect x="11" y="37" width="42" height="10" rx="3" fill="#f59e0b"/>
+  <circle cx="21" cy="47" r="5" fill="#111827" stroke="#f59e0b" stroke-width="3"/>
+  <circle cx="43" cy="47" r="5" fill="#111827" stroke="#f59e0b" stroke-width="3"/>
+  <path d="M24 27 L23 34 L41 34 L40 27 Z" fill="#111827" opacity="0.6"/>
+</svg>
