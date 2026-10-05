@@ -1,0 +1,15 @@
+{
+  "name": "verification-pdf",
+  "version": "1.0.0",
+  "description": "Vérification de l'authenticité de documents PDF par QR code : ajout du QR code au PDF, registre des documents émis, page publique de vérification.",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node test/test.js"
+  },
+  "license": "UNLICENSED"
+}

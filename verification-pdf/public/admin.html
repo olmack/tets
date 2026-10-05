@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Administration — Documents vérifiables</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar"><a href="/" class="brand"><img src="/favicon.svg" alt="" width="28" height="28"> <span id="issuer">Administration</span></a></header>
+<main class="wrap wide">
+  <div id="url-notice" class="notice" hidden></div>
+
+  <section class="card">
+    <h1>Émettre un document vérifiable</h1>
+    <p class="muted">Choisissez un PDF : un QR code y est ajouté, puis le document est enregistré dans le registre. Téléchargez ensuite le PDF tamponné et envoyez-le à son destinataire.</p>
+    <form id="issue-form" class="grid">
+      <div class="field full">
+        <label for="file">Fichier PDF *</label>
+        <input id="file" name="file" type="file" accept="application/pdf,.pdf" required>
+      </div>
+      <div class="field">
+        <label for="title">Intitulé *</label>
+        <input id="title" name="title" maxlength="200" placeholder="ex. Attestation de formation" required>
+      </div>
+      <div class="field">
+        <label for="recipient">Délivré à</label>
+        <input id="recipient" name="recipient" maxlength="200" placeholder="ex. Marie Dupont">
+      </div>
+      <div class="field">
+        <label for="issuedAt">Date d'émission *</label>
+        <input id="issuedAt" name="issuedAt" type="date" required>
+      </div>
+      <div class="field">
+        <label for="expiresAt">Valable jusqu'au <small>(facultatif)</small></label>
+        <input id="expiresAt" name="expiresAt" type="date">
+      </div>
+      <div class="field">
+        <label for="position">Emplacement du QR code</label>
+        <select id="position" name="position">
+          <option value="bas-droite">En bas à droite</option>
+          <option value="bas-gauche">En bas à gauche</option>
+          <option value="haut-droite">En haut à droite</option>
+          <option value="haut-gauche">En haut à gauche</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="pages">Pages</label>
+        <select id="pages" name="pages">
+          <option value="premiere">Première page</option>
+          <option value="derniere">Dernière page</option>
+          <option value="toutes">Toutes les pages</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="note">Note interne <small>(jamais affichée au public)</small></label>
+        <input id="note" name="note" maxlength="500">
+      </div>
+      <div class="field full">
+        <button class="btn" type="submit" id="submit">Ajouter le QR code et enregistrer</button>
+        <p id="form-error" class="error" role="alert"></p>
+      </div>
+    </form>
+    <div id="result" class="result" hidden>
+      <img id="result-qr" alt="QR code du document">
+      <div>
+        <h2>Document enregistré ✓</h2>
+        <p>N° <strong id="result-code" class="mono"></strong><br>
+        Page de vérification : <a id="result-url" target="_blank" rel="noopener"></a></p>
+        <a id="result-download" class="btn">Télécharger le PDF avec QR code</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="toolbar">
+      <h2>Registre des documents</h2>
+      <input id="search" type="search" placeholder="Rechercher (n°, intitulé, destinataire)">
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>N°</th><th>Intitulé</th><th>Délivré à</th><th>Émis le</th><th>État</th><th>Scans</th><th>Actions</th></tr></thead>
+        <tbody id="rows"><tr><td colspan="7" class="muted">Chargement…</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<script src="/admin.js" defer></script>
+</body>
+</html>
